@@ -1,0 +1,51 @@
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-12">
+
+        <h2 class="text-center pb-4 pt-4 text-decoration-underline">Gestion de produits</h2>
+
+        <table class="table text-center">
+          <tr class="text-success" style="font-weight: bold ">
+            <td>NOM</td> <td>ORIGINE</td> <td>STOCK</td> <td>ÉTAT</td> <td>AJUSTER</td>
+          </tr>
+          <tr *ngFor="let product of products$ | async">
+
+            <td>{{ product.name }}</td>
+            <td>{{ product.origin }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.state }}</td>
+
+            <td class="pt-1 pb-1">
+              <button type="button" class="btn btn-success" (click)="Upd(product.id)" style="background-color: #198754;margin-right: 8px;">Modifier</button>
+              <button type="button" class="btn btn-success" (click)="Del(product.id)" style="background-color: #198754;">Supprimer</button>
+            </td>
+
+          </tr>
+        </table>
+
+        <div class="col-12 text-center pb-5">
+          <form #addProdForm="ngForm" (ngSubmit)="Add(addProdForm.value)">
+            <table class="text-center">
+              <tr>
+                <td style="padding: 10px;">Matériel :</td> <td style="padding: 10px;"><input type="text" ngModel name="name" class="input-group-text" required/></td>
+                <td style="padding: 10px;">Origine :</td> <td style="padding: 10px;"><input type="text" ngModel name="origin" class="input-group-text" required/></td>
+                <td style="padding: 10px;">Etat :</td> <td style="padding: 10px;"><select ngModel name="state" class="form-select" required>
+                <option value="Disponible">Disponible</option>
+                <option value="Rupture">Rupture</option>
+              </select></td>
+                <td style="padding: 10px;">Stock :</td> <td style="padding: 10px;"><input type="number" ngModel name="stock" class="input-group-text" required/></td>
+              </tr>
+            </table>
+            <button class="btn btn-success" type="submit" style="padding: 10px;">Ajouter le produit</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+

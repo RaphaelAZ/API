@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-4">
+      <button class="text-center btn btn-success" (click)="redirection()">Retour</button>
+    </div>
+
+    <div class="col-12 text-center">
+      <h1 class="pt-2">Modification d'un produit</h1>
+
+        <table class="table table-success pb-5">
+          <tr class="text-success" style="font-weight: bold">
+            <td>No.</td>
+            <td>NOM</td>
+            <td>ORIGINE</td>
+            <td>ETAT</td>
+            <td>STOCK</td>
+          </tr>
+          <tr>
+            <td>{{ Prod[0] }}</td>
+            <td>{{ Prod[1] }}</td>
+            <td>{{ Prod[2] }}</td>
+            <td>{{ Prod[3] }}</td>
+            <td>{{ Prod[4] }}</td>
+          </tr>
+        </table>
+
+      <div class="col-12 text-center mt-5">
+        <form #modProdForm="ngForm" (ngSubmit)="prepareUpd(modProdForm.value)">
+          <table class="text-center">
+            <tr>
+              <td style="padding: 10px;">Nom :</td> <td style="padding: 10px;"><input type="text" ngModel name="name" class="input-group-text" required/></td>
+              <td style="padding: 10px;">Origine :</td> <td style="padding: 10px;"><input type="text" ngModel name="origin" class="input-group-text" required/></td>
+              <td style="padding: 10px;">Etat :</td> <td style="padding: 10px;">
+              <select ngModel name="state" class="form-select" required>
+                <option value="Disponible">Disponible</option>
+                <option value="Rupture">Rupture</option>
+              </select>
+              </td>
+              <td style="padding: 10px;">Stock :</td> <td style="padding: 10px;"><input type="number" ngModel name="stock" class="input-group-text" required/></td>
+            </tr>
+          </table>
+          <button class="btn btn-success mt-5" type="submit" style="padding: 10px;">Modifier le produit</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
